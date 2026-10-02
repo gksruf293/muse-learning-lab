@@ -52,11 +52,11 @@ claude
 # 또는: codex login
 
 ./start-local.ps1
-# Codex로 리뷰하려면:
-./start-local.ps1 -Provider codex
+# Claude로 리뷰하려면:
+./start-local.ps1 -Provider claude
 ```
 
-브라우저에서 http://127.0.0.1:3847 을 여세요. 기본 리뷰 도구는 Claude입니다. 기본 모델은 CLI에 설정된 모델을 따르며 별도 모델을 강제로 지정하지 않습니다. 이 PC에 있는 `.npm-global` 설치와 인접 폴더의 `.tools/gh/bin/gh.exe`는 실행 스크립트가 찾습니다. 그 밖의 설치는 PATH에 도구를 등록하거나 `MUSE_GH_PATH`, `MUSE_CLAUDE_PATH`, `MUSE_CODEX_PATH`로 실행 파일의 절대 경로를 지정하세요. Codex npm 설치는 `codex.js` 경로를 사용할 수 있습니다.
+브라우저에서 http://127.0.0.1:3847 을 여세요. 기본 리뷰 도구는 Codex입니다. 별도 모델을 강제로 지정하지 않습니다. Claude는 CLI 기본 모델을, 안전하게 사용자 설정을 제외해 실행하는 Codex는 CLI 내장 기본 모델을 사용합니다. 이 PC에 있는 `.npm-global` 설치와 인접 폴더의 `.tools/gh/bin/gh.exe`는 실행 스크립트가 찾습니다. 그 밖의 설치는 PATH에 도구를 등록하거나 `MUSE_GH_PATH`, `MUSE_CLAUDE_PATH`, `MUSE_CODEX_PATH`로 실행 파일의 절대 경로를 지정하세요. Codex npm 설치는 `codex.js` 경로를 사용할 수 있습니다.
 
 GitHub CLI 로그인이 없지만 Git Credential Manager에 기존 GitHub 인증이 있으면 현재 프로세스에서만 사용합니다. 토큰은 저장소나 설정 파일에 쓰지 않고 AI CLI 자식 프로세스에 전달하지 않습니다. 도구는 저장소 소유자 `gksruf293` 계정으로 로그인해야 합니다.
 

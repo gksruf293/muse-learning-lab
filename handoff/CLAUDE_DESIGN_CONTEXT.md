@@ -47,7 +47,7 @@ Muse는 한국어 개인 학습 블로그이자 학습 기록 도구입니다. �
 | `.github/workflows/pages.yml` | 검사·GitHub Pages 배포 |
 | `tests/learning.test.mjs` | 저장 형식·보안 경계·리뷰 재시도 검사 |
 
-GitHub Pages는 `docs/`만 배포합니다. 정적 앱에 모델 키나 GitHub 쓰기 토큰을 넣지 않습니다. 리뷰는 GitHub Actions가 아니라 **사용자의 PC에 설치된 Claude/Codex CLI**가 작성합니다. 기본 모델은 CLI 설정을 따릅니다. OpenRouter를 사용할 수 있다는 답변이 있었지만 사용자는 이후 리뷰도 PC CLI를 쓰도록 명확히 정정했습니다. API 키 기반 방식으로 되돌리지 마세요.
+GitHub Pages는 `docs/`만 배포합니다. 정적 앱에 모델 키나 GitHub 쓰기 토큰을 넣지 않습니다. 리뷰는 GitHub Actions가 아니라 **사용자의 PC에 설치된 Claude/Codex CLI**가 작성합니다. 별도 모델을 지정하지 않으며, Claude는 CLI 기본 모델을, 사용자 설정을 제외하는 Codex는 CLI 내장 기본 모델을 사용합니다. OpenRouter를 사용할 수 있다는 답변이 있었지만 사용자는 이후 리뷰도 PC CLI를 쓰도록 명확히 정정했습니다. API 키 기반 방식으로 되돌리지 마세요.
 
 ## 저장과 실행 계약
 

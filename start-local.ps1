@@ -1,4 +1,4 @@
-param([ValidateSet('claude','codex')][string]$Provider = 'claude')
+param([ValidateSet('claude','codex')][string]$Provider = 'codex')
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 $ghCandidate = Join-Path (Split-Path $PSScriptRoot -Parent) '.tools\gh\bin\gh.exe'

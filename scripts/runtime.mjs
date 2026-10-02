@@ -9,7 +9,7 @@ export const localDir=join(root,'.local');mkdirSync(localDir,{recursive:true});
 export const lessons=JSON.parse(readFileSync(join(root,'docs/data/lessons.json'),'utf8'));
 export const publicConfig=JSON.parse(readFileSync(join(root,'docs/data/config.json'),'utf8'));
 const overrides=existsSync(join(root,'local.config.json'))?JSON.parse(readFileSync(join(root,'local.config.json'),'utf8')):{};
-export const config={provider:'claude',pollSeconds:60,port:3847,repo:publicConfig.repo,...overrides};
+export const config={provider:'codex',pollSeconds:60,port:3847,repo:publicConfig.repo,...overrides};
 if(config.repo!==publicConfig.repo||!['claude','codex'].includes(config.provider))throw new Error('저장소 또는 리뷰 도구 설정을 확인하세요.');
 export function writeJson(path,data){writeFileSync(path+'.tmp',JSON.stringify(data,null,2),'utf8');renameSync(path+'.tmp',path);}
 export function readJson(path,fallback={}){try{return JSON.parse(readFileSync(path,'utf8'));}catch{return fallback;}}
@@ -34,7 +34,8 @@ export async function saveSubmission(value){
   const issues=await listIssues();const previous=issues.find(i=>{if(i.author.login!==publicConfig.owner)return false;try{return parseIssue(i.body,lessons).submissionId===submission.submissionId;}catch{return false;}});
   const lesson=lessons.find(l=>l.id===submission.lessonId);const path=join(localDir,`submission-${submission.submissionId}.md`);writeFileSync(path,issueBody(submission,lesson),'utf8');
   if(previous){const old=parseIssue(previous.body,lessons);if(JSON.stringify(old)!==JSON.stringify(submission))await gh(['issue','edit',String(previous.number),'--repo',config.repo,'--body-file',path]);return {url:previous.url,number:previous.number};}
-  const url=(await gh(['issue','create','--repo',config.repo,'--title',`[학습] ${submission.date} ${lesson.title}`,'--body-file',path])).trim();const number=Number(url.split('/').at(-1));if(!Number.isSafeInteger(number))throw new Error('저장 결과를 확인하지 못했습니다. GitHub Issues에서 확인하세요.');return {url,number};
+  const title=submission.notes.startsWith('[연결 검수]')?'[연결 검수] 공개 저장·PC CLI 리뷰 테스트 (실제 학습 아님)':`[학습] ${submission.date} ${lesson.title}`;
+  const url=(await gh(['issue','create','--repo',config.repo,'--title',title,'--body-file',path])).trim();const number=Number(url.split('/').at(-1));if(!Number.isSafeInteger(number))throw new Error('저장 결과를 확인하지 못했습니다. GitHub Issues에서 확인하세요.');return {url,number};
 }
 export async function saveMaterial(material){
   if(!material||typeof material.title!=='string'||!material.title.trim()||material.title.length>150||typeof material.notes!=='string'||material.notes.length>2000)throw new Error('자료 제목과 메모를 확인하세요.');
