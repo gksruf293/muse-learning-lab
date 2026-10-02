@@ -105,4 +105,6 @@ Claude 리뷰는 도구·MCP·세션 저장을 끄고 안전 모드로 실행합
 - [Codex 비대화형 실행](https://learn.chatgpt.com/docs/non-interactive-mode)
 - 학습 원문 링크는 각 학습 문서의 `sources` 항목에 있습니다.
 
-외부 강의 연계 9~15강은 공개 소개·목차를 검토해 별도 실습으로 구성했습니다. 영상 본편을 AI가 시청한 것으로 표시하지 않습니다. [강의별 학습 계획과 확인 범위](handoff/COURSE_LEARNING_PLAN.md)를 참고하세요.
+외부 강의 연계 9~15강은 한빛·freeCodeCamp의 지정 영상 구간 자막, DeepLearning.AI의 공식 수업 노트·실제 코드, 최신 Claude Code 문서를 대조해 개정했습니다. [강의별 학습 계획과 실제 확인 범위](handoff/COURSE_LEARNING_PLAN.md)를 기록했습니다. FlowCoder 데이터 분석 본편은 확인하지 못했으므로 공개 안내를 참고한 독립 실습으로 표시합니다. 강의 전체를 수강한 것으로 표현하지 않습니다.
+
+[9~15강 실습 파일](docs/practice/README.md)에는 퀴즈 검수, 검토자 설정, 도구 계약, 코드 추적 양식과 검색 오류·구조 개선·CSV 분석 예제가 있습니다. 패키지 설치나 모델 API 키 없이 PC의 Node.js로 확인할 수 있습니다. 검색·CSV starter의 검사 실패는 의도된 학습 과제이며, 저장소 검사는 이 실패를 재현하고 수정 후 통과까지 확인합니다.

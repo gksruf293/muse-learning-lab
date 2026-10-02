@@ -1,0 +1,23 @@
+[
+  {
+    "id": "a",
+    "question": "세계에서 가장 좋은 AI 모델은 무엇인가?",
+    "answer": "모델 A",
+    "explanation": "사람들이 가장 많이 추천하기 때문이다.",
+    "source": null
+  },
+  {
+    "id": "b",
+    "question": "학습 기록 저장 요청의 HTTP 응답이 200이면 실제 DB 저장까지 완료됐다고 단정할 수 있는가?",
+    "answer": "예",
+    "explanation": "200은 모든 작업의 성공을 보장한다.",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200"
+  },
+  {
+    "id": "c",
+    "question": "minutes가 각각 30, 60, 90인 세 행에서 WHERE minutes >= 60을 적용하면 몇 행이 남는가?",
+    "answer": "2행",
+    "explanation": "60과 90이 조건을 만족한다.",
+    "source": "https://www.sqlite.org/lang_select.html"
+  }
+]

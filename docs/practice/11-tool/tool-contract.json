@@ -1,0 +1,27 @@
+{
+  "note": "MCP 도구 계약을 읽는 독립 연습 자료이며 실제 서버나 연결 설정이 아니다.",
+  "tool": {
+    "name": "find_lessons",
+    "description": "공개 학습 문서에서 제목에 검색어를 포함한 항목을 찾는다.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {"type": "string", "minLength": 1},
+        "limit": {"type": "integer", "minimum": 1, "maximum": 10}
+      },
+      "required": ["query", "limit"],
+      "additionalProperties": false
+    }
+  },
+  "validCall": {"name": "find_lessons", "arguments": {"query": "SQL", "limit": 2}},
+  "invalidCall": {"name": "find_lessons", "arguments": {"query": "SQL", "limit": "전체"}},
+  "exampleResult": {
+    "content": [{"type": "text", "text": "제목 검색 결과: SQL로 학습 기록 골라 보기 (sql-first-query)"}],
+    "isError": false
+  },
+  "claimsToCheck": [
+    "SQL이라는 단어를 포함한 학습 문서 제목을 찾았다.",
+    "해당 학습 문서의 본문 전체를 읽었다.",
+    "사용자가 SQL 실습을 완료했다."
+  ]
+}

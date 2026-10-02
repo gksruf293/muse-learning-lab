@@ -1,0 +1,7 @@
+date,lesson,minutes,completed
+2026-10-01,SQL,60,true
+2026-10-02,HTTP,30,false
+2026-10-03,Python,60,true
+2026-10-04,FastAPI,,true
+2026-10-05,AI,-20,true
+2026-10-06,MCP,40,yes
