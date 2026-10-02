@@ -18,6 +18,7 @@ $('#repo-link').href=`https://github.com/${config.repo}`;
 $('#lesson-file-link').href=`https://github.com/${config.repo}/edit/main/docs/data/lessons.json`;
 if(companion){$('#connection').textContent=`PC 연결됨 · 리뷰 도구: ${companion.provider} · 완료하면 GitHub CLI로 저장합니다.`;}
 else{$('#connection').replaceChildren(node('span','공개 학습 화면입니다. PC가 켜져 있고 연결 프로그램이 실행 중이면 저장한 답변을 CLI가 리뷰합니다. '),link('PC용 화면 열기 ↗',config.companionUrl),node('span',' · '),link('연결 안내','./guide.html'));}
+if(new URLSearchParams(location.search).has('verification'))$('#connection').append(node('p','연결 검수 모드: 아래 예시 답변은 실제 사용자 학습 기록이 아닙니다.'));
 let currentId=lessons.find(l=>location.hash===`#lesson=${l.id}`)?.id || load('muse.lastLesson',lessons[0].id);
 function renderLesson(id){
   const lesson=lessons.find(l=>l.id===id)||lessons[0];currentId=lesson.id;save('muse.lastLesson',currentId);
