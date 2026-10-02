@@ -1,5 +1,5 @@
-import {koreaDate,validateSubmission,issueBody,parseIssue,issueLink,reviewPrompt,materialLink,materialBody} from './core.mjs?v=20261002e';
-import {filterLessons,validationErrors} from './ui.mjs?v=20261002e';
+import {koreaDate,validateSubmission,issueBody,parseIssue,issueLink,reviewPrompt,materialLink,materialBody} from './core.mjs?v=20261002f';
+import {filterLessons,validationErrors} from './ui.mjs?v=20261002f';
 const $ = s => document.querySelector(s);
 function node(tag,text,attrs={}) {const e=document.createElement(tag); if(text!==undefined)e.textContent=text; for(const [k,v] of Object.entries(attrs)) e.setAttribute(k,v); return e;}
 function link(text,url,attrs={}){return node('a',text,{href:url,target:'_blank',rel:'noopener',...attrs});}
@@ -44,6 +44,8 @@ function renderLessonList(){
   if(!found.some(l=>l.id===currentId)){const current=lessons.find(l=>l.id===currentId);picker.append(node('option',`현재 · ${current?.title} (검색 결과 밖)`,{value:currentId,disabled:''}));}
   picker.append(...found.map(l=>node('option',`${l.tag} · ${l.title}`,{value:l.id})));picker.value=currentId;
   if(focusedId){const button=Array.from($('#lesson-list').children).find(b=>b.dataset.lesson===focusedId);button?.focus({preventScroll:true});}
+  const list=$('#lesson-list'),active=list.querySelector('.active');
+  if(active&&list.getBoundingClientRect().height){const b=active.getBoundingClientRect(),box=list.getBoundingClientRect();list.scrollTop+=b.top<box.top?b.top-box.top:Math.max(0,b.bottom-box.bottom);}
 }
 $('#lesson-search').oninput=renderLessonList;
 $('#clear-search').onclick=()=>{$('#lesson-search').value='';renderLessonList();$('#lesson-search').focus();};
