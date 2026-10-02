@@ -4,7 +4,7 @@
 
 - 사이트: https://gksruf293.github.io/muse-learning-lab/
 - PC 학습 화면: http://127.0.0.1:3847 (연결 프로그램 실행 중)
-- Claude 디자인 의뢰: [맥락 문서](handoff/CLAUDE_DESIGN_CONTEXT.md) · [복사용 프롬프트](handoff/CLAUDE_DESIGN_PROMPT.txt)
+- Claude 디자인 의뢰: [작업 요청 및 상세 맥락 통합 문서](handoff/CLAUDE_DESIGN_HANDOFF.md) — 이 파일 하나만 전달하세요.
 
 ## 하루 학습 흐름
 
