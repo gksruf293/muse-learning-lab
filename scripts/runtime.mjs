@@ -3,7 +3,7 @@ import {existsSync,readFileSync,mkdirSync,writeFileSync,renameSync} from 'node:f
 import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {validateSubmission,parseIssue,issueBody,reviewPrompt} from '../docs/assets/core.mjs';
+import {validateSubmission,parseIssue,issueBody,reviewPrompt,validateMaterial,materialBody} from '../docs/assets/core.mjs';
 export const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 export const localDir=join(root,'.local');mkdirSync(localDir,{recursive:true});
 export const lessons=JSON.parse(readFileSync(join(root,'docs/data/lessons.json'),'utf8'));
@@ -38,9 +38,8 @@ export async function saveSubmission(value){
   const url=(await gh(['issue','create','--repo',config.repo,'--title',title,'--body-file',path])).trim();const number=Number(url.split('/').at(-1));if(!Number.isSafeInteger(number))throw new Error('저장 결과를 확인하지 못했습니다. GitHub Issues에서 확인하세요.');return {url,number};
 }
 export async function saveMaterial(material){
-  if(!material||typeof material.title!=='string'||!material.title.trim()||material.title.length>150||typeof material.notes!=='string'||material.notes.length>2000)throw new Error('자료 제목과 메모를 확인하세요.');
-  const url=new URL(material.url);if(url.protocol!=='https:')throw new Error('HTTPS 자료 링크만 저장할 수 있습니다.');await assertOwner();
-  const path=join(localDir,'material.md');writeFileSync(path,`# ${material.title}\n\n원문: ${url.href}\n\n${material.notes}\n\n<!-- muse-material\n${JSON.stringify(material).replaceAll('<','\\u003c').replaceAll('>','\\u003e')}\n-->`,'utf8');
+  material=validateMaterial(material);await assertOwner();
+  const path=join(localDir,'material.md');writeFileSync(path,materialBody(material),'utf8');
   return {url:(await gh(['issue','create','--repo',config.repo,'--title',`[자료] ${material.title}`,'--body-file',path])).trim()};
 }
 export function parseClaudeOutput(output){const data=JSON.parse(output);if(data.is_error||data.subtype!=='success'||typeof data.result!=='string'||!data.result.trim())throw new Error('Claude가 정상 리뷰를 반환하지 않았습니다. 로그인·사용 한도를 확인하세요.');return data.result.trim();}
