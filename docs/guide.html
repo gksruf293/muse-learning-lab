@@ -1,1 +1,69 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muse · PC 연결 안내</title><link rel="stylesheet" href="./assets/style.css?v=20261002c"></head><body><main class="guide"><a href="./index.html">← 학습으로 돌아가기</a><h1 style="font-size:34px">학습 화면과 PC 연결</h1><p>자료·답변·리뷰는 공개 GitHub 저장소에 남습니다. AI 리뷰는 PC의 Claude 또는 Codex CLI가 작성하고, GitHub CLI가 저장합니다. 기본 도구는 Codex입니다. 별도 모델 API 키는 사용하지 않습니다. CLI에 로그인한 계정의 사용 한도는 적용됩니다.</p><h2>PC에서 시작하기</h2><ol><li>저장소를 PC에 받습니다.</li><li>Node.js 22 이상, GitHub CLI, Claude Code 또는 Codex CLI를 준비합니다.</li><li><code>gh auth login</code>과 사용할 AI CLI 로그인을 완료합니다.</li><li>PowerShell에서 <code>./start-local.ps1</code>을 실행합니다. Claude를 쓰려면 <code>./start-local.ps1 -Provider claude</code>를 실행합니다.</li><li><a href="http://127.0.0.1:3847">PC용 학습 화면</a>을 엽니다.</li></ol><p>이 PC의 설치 경로는 실행 스크립트가 자동으로 찾아 사용합니다. 공개 페이지가 PC 화면을 여는 권한을 주지 않거나 PC 프로그램이 꺼져 있으면 위 주소를 새 탭에 직접 여세요.</p><h2>완료 버튼을 누르면</h2><ol><li>현재 기기의 답변 초안을 확인합니다.</li><li>PC 연결 프로그램이 GitHub CLI로 공개 학습 Issue를 만듭니다.</li><li>연결 프로그램이 Claude/Codex CLI에 학습 자료·평가 기준·답변을 전달합니다.</li><li>리뷰를 같은 Issue 댓글로 저장합니다.</li><li>학습 기록을 새로고침하고 펼치면 답변과 리뷰를 다시 볼 수 있습니다.</li></ol><h2>휴대폰과 공개 페이지</h2><p>공개 페이지에서는 답변 작성 뒤 GitHub의 최종 저장 버튼을 눌러야 기록됩니다. PC가 꺼져 있으면 리뷰는 대기합니다. PC 연결 프로그램을 다시 켜면 남은 기록을 처리합니다. GitHub 저장 전의 초안은 다른 기기에 자동으로 공유되지 않습니다.</p><h2>문제가 생겼을 때</h2><p>로그인이 풀리거나 CLI 사용 한도에 도달하면 답변은 보존되고 리뷰만 대기합니다. PC 연결 화면의 상태와 콘솔 메시지를 확인하세요. 즉시 리뷰가 필요하면 답변 아래 ‘수동 리뷰 프롬프트’를 복사해 AI 대화에 전달할 수 있습니다.</p><p><a href="https://github.com/gksruf293/muse-learning-lab/blob/main/README.md">설치·연결 문서 ↗</a></p></main></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Muse · PC 연결 안내</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="./assets/style.css?v=20261002e">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">m.</span><span>Muse</span><span class="brand-sub">learning journal</span></a>
+      <nav aria-label="주 메뉴"><a href="./index.html#learn">오늘의 학습</a><a href="./index.html#history">학습 기록</a><a href="./index.html#library">자료 보관함</a></nav>
+    </div>
+  </header>
+  <main id="main" class="guide">
+    <a class="back" href="./index.html">← 학습으로 돌아가기</a>
+    <p class="eyebrow">사용 안내</p>
+    <h1>학습 화면과 PC 연결</h1>
+    <p>자료·답변·리뷰는 공개 GitHub 저장소에 남습니다. AI 리뷰는 PC의 Claude 또는 Codex CLI가 작성하고, GitHub CLI가 저장합니다. 기본 도구는 Codex입니다. 별도 모델 API 키는 사용하지 않으며, CLI에 로그인한 계정의 사용 한도가 적용됩니다.</p>
+
+    <h2>답변이 거치는 세 단계</h2>
+    <p>학습 화면의 완료 막대 아래에 같은 세 단계가 표시됩니다. 각 단계는 따로 끝납니다.</p>
+    <ol class="track">
+      <li data-state="draft"><b>기기 초안</b>입력할 때마다 현재 브라우저에 자동 저장됩니다. 다른 기기와 동기화되지 않고, 아직 공개되지 않았습니다.</li>
+      <li data-state="action"><b>GitHub 공개 저장</b>PC 화면에서는 완료 버튼이 바로 저장합니다. 공개 페이지에서는 GitHub 화면의 생성 버튼을 직접 눌러야 저장됩니다.</li>
+      <li data-state="wait"><b>PC CLI 리뷰</b>GitHub에 저장된 답변만 리뷰합니다. PC 연결 프로그램이 켜져 있어야 하며, 끝나면 같은 기록의 댓글로 남습니다.</li>
+    </ol>
+
+    <h2>PC에서 시작하기</h2>
+    <ol>
+      <li>저장소를 PC에 받습니다.</li>
+      <li>Node.js 22 이상, GitHub CLI, Claude Code 또는 Codex CLI를 준비합니다.</li>
+      <li><code>gh auth login</code>과 사용할 AI CLI 로그인을 완료합니다.</li>
+      <li>PowerShell에서 <code>./start-local.ps1</code>을 실행합니다. Claude를 쓰려면 <code>./start-local.ps1 -Provider claude</code>를 실행합니다.</li>
+      <li><a href="http://127.0.0.1:3847">PC용 학습 화면</a>을 엽니다.</li>
+    </ol>
+    <p>이 PC의 설치 경로는 실행 스크립트가 자동으로 찾아 사용합니다. 공개 페이지가 PC 화면을 여는 권한을 주지 않거나 PC 프로그램이 꺼져 있으면 위 주소를 새 탭에 직접 여세요.</p>
+
+    <h2>PC 화면에서 완료하면</h2>
+    <ol>
+      <li>현재 기기의 답변 초안을 확인합니다.</li>
+      <li>PC 연결 프로그램이 GitHub CLI로 공개 학습 Issue를 만듭니다.</li>
+      <li>연결 프로그램이 Claude/Codex CLI에 학습 자료·평가 기준·답변을 전달합니다.</li>
+      <li>리뷰를 같은 Issue 댓글로 저장합니다.</li>
+      <li>학습 기록을 새로고침하고 펼치면 답변과 리뷰를 다시 볼 수 있습니다.</li>
+    </ol>
+
+    <h2>휴대폰과 공개 페이지</h2>
+    <p>공개 페이지는 PC 명령을 실행할 수 없습니다. 완료 버튼을 누르면 답변을 미리 채운 GitHub 새 Issue 화면으로 이어지고, 그 화면에서 생성 버튼을 눌러야 기록됩니다. 그 전까지는 저장된 것이 아닙니다.</p>
+    <div class="callout">
+      <p><strong>답변이 길 때</strong> · 링크에 담을 수 없을 만큼 길면 Markdown 파일을 내려받습니다. GitHub 새 학습 기록 화면을 열고 파일 내용 전체를 본문에 붙여 넣은 뒤 저장하세요. 파일 끝의 <code>muse-submission</code> 주석까지 그대로 두어야 리뷰가 연결됩니다.</p>
+    </div>
+    <p>PC가 꺼져 있으면 리뷰는 대기합니다. PC 연결 프로그램을 다시 켜면 남은 기록을 처리합니다. GitHub 저장 전의 초안은 다른 기기에 자동으로 공유되지 않습니다.</p>
+
+    <h2>리뷰가 오지 않을 때</h2>
+    <ul>
+      <li>PC가 꺼져 있거나 절전 중이거나 인터넷이 끊겼으면 다시 켜질 때까지 대기합니다.</li>
+      <li>CLI 로그인이 만료되거나 사용 한도에 도달하면 답변은 보존되고 리뷰만 대기합니다. 실패한 리뷰는 시간을 두고 다시 시도합니다.</li>
+      <li>답변을 수정하면 이전 리뷰는 그 답변의 리뷰가 아니므로 새 리뷰가 필요합니다.</li>
+    </ul>
+    <p>PC 연결 화면의 학습 기록 상태와 콘솔 메시지를 확인하세요. 즉시 리뷰가 필요하면 답변 아래 ‘수동 리뷰 프롬프트’를 복사해 AI 대화에 전달할 수 있습니다.</p>
+    <p><a href="https://github.com/gksruf293/muse-learning-lab/blob/main/README.md">설치·연결 문서 ↗</a></p>
+  </main>
+  <footer class="site-footer"><span>Muse · 기록으로 남는 학습</span><a href="./index.html">학습으로 돌아가기</a><span>자료·답변·리뷰 공개</span></footer>
+</body>
+</html>

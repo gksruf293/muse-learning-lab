@@ -5,6 +5,7 @@
 - 사이트: https://gksruf293.github.io/muse-learning-lab/
 - PC 학습 화면: http://127.0.0.1:3847 (연결 프로그램 실행 중)
 - Claude 디자인 의뢰: [작업 요청 및 상세 맥락 통합 문서](handoff/CLAUDE_DESIGN_HANDOFF.md) — 이 파일 하나만 전달하세요.
+- 디자인 기준: [Muse 적용 기준](design-system/muse/pages/learning.md) — 프로젝트에 설치한 UI UX Pro Max의 추천을 한국어 학습 화면에 맞춰 적용했습니다.
 
 ## 하루 학습 흐름
 
