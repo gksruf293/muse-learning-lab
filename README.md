@@ -76,7 +76,7 @@ npm run review
 
 ## 학습 문서와 새 자료
 
-`docs/data/lessons.json`에 8개의 학습 문서를 넣었습니다. 원문을 먼저 읽고 한국어 설명·실습·질문·평가 기준을 직접 작성했습니다. 원문 링크, 읽은 날짜, 읽은 구간을 함께 기록했습니다. 자료 전문을 복제하지 않습니다. 60분은 예상 시간입니다.
+`docs/data/lessons.json`에 15개의 학습 문서를 넣었습니다. 원문을 먼저 읽고 한국어 설명·실습·질문·평가 기준을 직접 작성했습니다. 원문 링크, 읽은 날짜, 읽은 구간을 함께 기록했습니다. 자료 전문을 복제하지 않습니다. 60분은 예상 시간입니다.
 
 학습 문서를 추가할 때:
 
@@ -104,3 +104,5 @@ Claude 리뷰는 도구·MCP·세션 저장을 끄고 안전 모드로 실행합
 - [Claude Code CLI 옵션](https://code.claude.com/docs/en/cli-reference)
 - [Codex 비대화형 실행](https://learn.chatgpt.com/docs/non-interactive-mode)
 - 학습 원문 링크는 각 학습 문서의 `sources` 항목에 있습니다.
+
+외부 강의 연계 9~15강은 공개 소개·목차를 검토해 별도 실습으로 구성했습니다. 영상 본편을 AI가 시청한 것으로 표시하지 않습니다. [강의별 학습 계획과 확인 범위](handoff/COURSE_LEARNING_PLAN.md)를 참고하세요.
