@@ -1,0 +1,6 @@
+{
+  "repo": "gksruf293/muse-learning-lab",
+  "provider": "claude",
+  "pollSeconds": 60,
+  "port": 3847
+}
